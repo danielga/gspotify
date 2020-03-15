@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset=utf-8 />
+        <title>Gspotify authorization</title>
+    </head>
+    <body>
+        <script>
+            let urlParams;
+            if ('URLSearchParams' in window) {
+                urlParams = {};
+                const params = new URLSearchParams(window.location.search);
+                for (const [key, value] of params) {
+                    urlParams[key] = value;
+                }
+            }
+
+            if ('gspotify' in window) {
+                gspotify.authorize(urlParams);
+            } else {
+                console.log(JSON.stringify(urlParams));
+            }
+        </script>
+    </body>
+</html>
